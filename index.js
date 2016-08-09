@@ -1,18 +1,16 @@
 function showMessage(message) {
   $("#console").text(message);
+  $("#input").val("");
 }
-
 function send() {
   let input = $("#input").val();
-  // TODO just demo
-  alert("Send: " + input);
-}
-
-function start() {
-  $.get('./zipcode-to-barcode/12345', function(barcode) {
-    // TODO just demo
-    showMessage(barcode);
+  $.get('./choose/'+input,function (result) {
+      showMessage(result);
   });
 }
-
+function start() {
+  $.get('./menu', function(result) {
+    showMessage(result);
+  });
+}
 start();
